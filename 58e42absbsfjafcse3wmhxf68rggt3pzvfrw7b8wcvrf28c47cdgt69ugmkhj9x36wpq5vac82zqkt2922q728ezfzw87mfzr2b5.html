@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player</title>
+    <title>ieric's Movies</title>
     <style>
-      
+        /* Define the style for the video player */
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
         #video-player {
+            position: relative;
             width: 100%;
             max-width: 640px;
-            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
     <div id="video-player">
+        <h1>ieric's Movies</h1>
         <video id="my-video" controls>
             <source src="https://4k-ultrahd.com/themes/v1//assets/movie.mp4" type="video/mp4">
-                  </video>
+            <!-- Add more source elements for different video formats if needed -->
+            Your browser does not support the video tag.
+        </video>
     </div>
 
-
+    <script>
+        // Add JavaScript code if needed
+    </script>
 </body>
 </html>
