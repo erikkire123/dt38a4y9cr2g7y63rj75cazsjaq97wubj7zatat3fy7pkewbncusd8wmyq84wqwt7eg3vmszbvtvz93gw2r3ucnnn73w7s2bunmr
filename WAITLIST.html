@@ -1,0 +1,121 @@
+<html>
+<head>
+  <title>WAIT-LIST</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .dashboard {
+      display: flex;
+      align-items: center;
+    }
+
+    .price-container {
+      text-align: center;
+      background-color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .waitlist-container {
+      background-color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      margin-left: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    #waitlist {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .waitlisted {
+      margin-bottom: 15px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: #000;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    .waitlisted span:first-child {
+      margin-right: 10px;
+    }
+
+    li {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="price-container">
+      <h2>Prices</h2>
+      <ul>
+        <li>1 Hour = 15K Wen</li>
+        <li>2 Hours = 30K Wen</li>
+        <li>3 Hours = 45K Wen</li>
+        <li>4 Hours = 60K Wen</li>
+        <li>5 Hours = 75K Wen</li>
+        <li>6 Hours = 90K Wen</li>
+        <li>7 Hours = 105K Wen</li>
+        <li>8 Hours = 120K Wen</li>
+        <li>9 Hours = 135K Wen</li>
+        <li>10 Hours = 150K Wen</li>
+        <li>1 Day = 300K Wen</li>
+      </ul>
+    </div>
+    <div class="waitlist-container">
+      <h1>WAIT-LIST</h1>
+      <ul id="waitlist"></ul>
+    </div>
+  </div>
+
+  <script>
+    var waitlistedPeople = [
+      { name: "bonczek12#0808", time: "1 HOUR" },
+      { name: "Tensa Zangetsu#1118", time: "5 HOURS" },
+      { name: "  Synapse_Playz#8570", time: "? HOURS" },
+
+    ];
+
+    var waitlistElement = document.getElementById("waitlist");
+    waitlistedPeople.forEach(function(person) {
+      var li = document.createElement("li");
+      li.className = "waitlisted";
+
+      var nameSpan = document.createElement("span");
+      nameSpan.textContent = person.name;
+
+      var timeSpan = document.createElement("span");
+      timeSpan.textContent = person.time;
+
+      li.appendChild(nameSpan);
+      li.appendChild(timeSpan);
+
+      waitlistElement.appendChild(li);
+    });
+  </script>
+</body>
+</html>
