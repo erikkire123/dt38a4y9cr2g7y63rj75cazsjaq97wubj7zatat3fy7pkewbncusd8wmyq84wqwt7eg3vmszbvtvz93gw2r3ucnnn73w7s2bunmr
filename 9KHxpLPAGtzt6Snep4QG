@@ -1,4 +1,16 @@
--- insert troll face, memcorruptv2
+local function generateRandomString(arg)
+    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    local randomString = ""
+
+    for _ = 1, length do
+        local charIndex = math.random(1, #characters)
+        randomString = randomString .. string.sub(characters, charIndex, charIndex)
+    end
+
+    return randomString
+end
+
+
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -78,7 +90,7 @@ function library:CreateWatermark(name, position)
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
 
     watermark.main = Instance.new("ScreenGui", coregui)
-    watermark.main.Name = "Watermark"
+    watermark.main.Name = generateRandomString(20)
     if syn then
         syn.protect_gui(watermark.main)
     end
@@ -229,7 +241,7 @@ function library:CreateWindow(name, size, hidebutton)
     end
 
     window.Main = Instance.new("ScreenGui", coregui)
-    window.Main.Name = name
+    window.Main.Name = generateRandomString(20)
     window.Main.DisplayOrder = 15
     if syn then
         syn.protect_gui(window.Main)
