@@ -1,4 +1,5 @@
--- insert troll face, memcorruptv2
+local function a(b)local c="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"local d=""for e=1,b do local f=math.random(1,#c)d=d..string.sub(c,f,f)end;return d end
+
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -217,7 +218,7 @@ end
 function library:CreateWindow(name, size, hidebutton)
     local window = { }
 
-    window.name = name or ""
+    window.name = a(20) or ""
     window.size = UDim2.fromOffset(size.X, size.Y) or UDim2.fromOffset(492, 598)
     window.hidebutton = hidebutton or Enum.KeyCode.RightShift
     window.theme = library.theme
@@ -229,7 +230,7 @@ function library:CreateWindow(name, size, hidebutton)
     end
 
     window.Main = Instance.new("ScreenGui", coregui)
-    window.Main.Name = name
+    window.Main.Name = a(20)
     window.Main.DisplayOrder = 15
     if syn then
         syn.protect_gui(window.Main)
