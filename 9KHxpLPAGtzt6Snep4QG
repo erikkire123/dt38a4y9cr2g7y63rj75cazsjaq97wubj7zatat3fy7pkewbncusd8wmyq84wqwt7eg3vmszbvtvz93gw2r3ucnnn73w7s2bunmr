@@ -1,5 +1,4 @@
-local function a(b)local c="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"local d=""for e=1,b do local f=math.random(1,#c)d=d..string.sub(c,f,f)end;return d end
-
+-- insert troll face, memcorruptv2
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -20,28 +19,28 @@ local mouse = player:GetMouse()
 local camera = game.Workspace.CurrentCamera
 
 library.theme = {
-   fontsize = 15,
+    fontsize = 17,
     titlesize = 20,
-    font = Enum.Font.GothamMedium,
+    font = Enum.Font.Code,
     background = "",
     tilesize = 90,
-    cursor = false,
+    cursor = true,
     cursorimg = "https://t0.rbxcdn.com/42f66da98c40252ee151326a82aab51f",
     backgroundcolor = Color3.fromRGB(20, 20, 20),
-    tabstextcolor = Color3.fromRGB(245,245,245),
-    bordercolor = Color3.fromRGB(50,50,50),
-    accentcolor = Color3.fromRGB(255, 0, 72),
-    accentcolor2 = Color3.fromRGB(200,200,200),
-    outlinecolor = Color3.fromRGB(50,50,50),
+    tabstextcolor = Color3.fromRGB(240, 240, 240),
+    bordercolor = Color3.fromRGB(60, 60, 60),
+    accentcolor = Color3.fromRGB(0, 34, 255),
+    accentcolor2 = Color3.fromRGB(18, 40, 107),
+    outlinecolor = Color3.fromRGB(60, 60, 60),
     outlinecolor2 = Color3.fromRGB(0, 0, 0),
-    sectorcolor = Color3.fromRGB(30,30,30),
-    toptextcolor = Color3.fromRGB(255, 0, 72),
+    sectorcolor = Color3.fromRGB(30, 30, 30),
+    toptextcolor = Color3.fromRGB(255, 255, 255),
     topheight = 48,
-    topcolor = Color3.fromRGB(13,13,13),
-    topcolor2 = Color3.fromRGB(12,12,12),
+    topcolor = Color3.fromRGB(30, 30, 30),
+    topcolor2 = Color3.fromRGB(30, 30, 30),
     buttoncolor = Color3.fromRGB(49, 49, 49),
     buttoncolor2 = Color3.fromRGB(39, 39, 39),
-    itemscolor = Color3.fromRGB(235,235,235),
+    itemscolor = Color3.fromRGB(200, 200, 200),
     itemscolor2 = Color3.fromRGB(210, 210, 210)
 }
 
@@ -230,7 +229,7 @@ function library:CreateWindow(name, size, hidebutton)
     end
 
     window.Main = Instance.new("ScreenGui", coregui)
-    window.Main.Name = a(50)
+    window.Main.Name = name
     window.Main.DisplayOrder = 15
     if syn then
         syn.protect_gui(window.Main)
