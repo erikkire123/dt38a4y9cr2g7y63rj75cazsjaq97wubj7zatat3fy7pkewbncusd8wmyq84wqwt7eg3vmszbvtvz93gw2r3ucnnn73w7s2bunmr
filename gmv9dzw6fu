@@ -1,5 +1,10 @@
 [
   {
+    "username": "eric",
+    "password": "###",
+    "balance": "inf"
+  },
+  {
     "username": "McGindyTsyon2016",
     "password": "McGindyTsyon2016123",
     "balance": "1.004.280"
