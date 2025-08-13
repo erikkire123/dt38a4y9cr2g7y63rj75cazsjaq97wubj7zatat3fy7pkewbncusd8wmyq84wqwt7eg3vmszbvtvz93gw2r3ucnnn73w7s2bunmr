@@ -1,0 +1,5300 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/brNTY8nX8t)
+-- Decompiled on 2025-08-13 16:56:14
+-- Luau version 6, Types version 3
+-- Time taken: 0.097894 seconds
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players_upvr = game:GetService("Players")
+local TweenService_upvr = game:GetService("TweenService")
+local Hitboxes = ReplicatedStorage:WaitForChild("Hitboxes")
+local VFX_upvr = ReplicatedStorage:WaitForChild("VFX")
+local SFX_upvr = ReplicatedStorage:WaitForChild("SFX")
+local function addOutline_upvr(arg1) -- Line 11, Named "addOutline"
+	--[[ Upvalues[1]:
+		[1]: VFX_upvr (readonly)
+	]]
+	VFX_upvr.OutlineEvent:FireAllClients({
+		Distance = 25;
+		FillColor = Color3.fromRGB(255, 38, 0);
+		OutlineTransparency = 0;
+		OutlineColor = Color3.fromRGB(255, 255, 255);
+		DepthMode = Enum.HighlightDepthMode.Occluded;
+		Time = 0.3;
+		Target = arg1.Parent;
+	})
+end
+function VfxFunction1(arg1, arg2) -- Line 30
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_18 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.Parent.Torso, 75, VFX_upvr.HitEffect2.HitEffectAttatchment, 10, 10)
+	local clone_79 = SFX_upvr.Hit:Clone()
+	clone_79.Parent = arg1.Torso
+	clone_79:Play()
+	if any_GetPlayerFromCharacter_result1_18 then
+		if any_GetPlayerFromCharacter_result1_18.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [57] #41
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [57] 41. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_79, 0.863)
+	-- KONSTANTERROR: [57] 41. Error Block 6 end (CF ANALYSIS FAILED)
+end
+function VfxFunction2(arg1, arg2) -- Line 55
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_25 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.Parent.Torso, 75, VFX_upvr.HitEffect2.TantoHit, 10, 10)
+	local clone_11 = SFX_upvr.Slash:Clone()
+	clone_11.Parent = arg1.Torso
+	clone_11:Play()
+	if any_GetPlayerFromCharacter_result1_25 then
+		if any_GetPlayerFromCharacter_result1_25.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [57] #41
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [57] 41. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_11, 0.863)
+	-- KONSTANTERROR: [57] 41. Error Block 6 end (CF ANALYSIS FAILED)
+end
+function VfxFunctionBat(arg1, arg2) -- Line 80
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_37 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.Parent.Torso, 75, VFX_upvr.HitEffect2.BatHit, 10, 10)
+	local clone_42 = SFX_upvr:FindFirstChild("Bathit"..math.random(1, 3)):Clone()
+	clone_42.Parent = arg1.Torso
+	clone_42:Play()
+	if any_GetPlayerFromCharacter_result1_37 then
+		if any_GetPlayerFromCharacter_result1_37.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [65] #48
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [65] 48. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_42, 0.863)
+	-- KONSTANTERROR: [65] 48. Error Block 6 end (CF ANALYSIS FAILED)
+end
+local module = {
+	Boxing = {
+		Damage = 9;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 11;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.08;
+		timeDelay = {0.09};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.5);
+		HitboxSizeOffset = Vector3.new(0.5, 0, 0.5);
+		Strength = 5;
+		Durability = 5;
+		Stamina = 10;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Skib = {
+		Damage = 6;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.08;
+		timeDelay = {0.09};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.5);
+		HitboxSizeOffset = Vector3.new(0.5, 0, 0.5);
+		Strength = 5;
+		Durability = 5;
+		Stamina = 10;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	Kure = {
+		Damage = 5;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 8;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.08;
+		timeDelay = {0.11};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.5);
+		HitboxSizeOffset = Vector3.new(-0.5, 0, -0.5);
+		Strength = 5;
+		Durability = 5;
+		Stamina = 10;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	["Muay Thai"] = {
+		Damage = 8.5;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.07;
+		timeDelay = {0.15};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.1000);
+		MasteryXp = 5;
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Ruya = {
+		Damage = 6;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+	};
+	Default = {
+		Damage = 5;
+		StunDuration = 0.95;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.07;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Systema = {
+		Damage = 8;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Zzz = {
+		Damage = 16;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 14;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.23};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -3);
+		HitboxSizeOffset = Vector3.new(1.5, 0, 1.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Shizuk1 = {
+		Damage = 16;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 14;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.23};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -3);
+		HitboxSizeOffset = Vector3.new(1.5, 0, 1.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+	};
+	Sword = {
+		Damage = 8;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction2;
+	};
+	Shizuk = {
+		Damage = 8;
+		StunDuration = 0.8;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+	};
+	Duman = {
+		Damage = 8;
+		StunDuration = 0.8;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 1;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+	};
+	Sync = {
+		Damage = 6;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+	};
+	Ape = {
+		Damage = 6;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.5);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+	};
+	Tanto = {
+		Damage = 8;
+		BleedDamage = 3;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.35;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 80;
+		FinalScreenShakeIntensity = 1;
+		Hitspeed = 0.09;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction2;
+		Custom = false;
+		FourthSkill = true;
+	};
+	Osaragi = {
+		Damage = 7;
+		BleedDamage = 5.45;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.35;
+		FinalDamage = 12.5;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 100;
+		FinalScreenShakeIntensity = 1;
+		Hitspeed = 0.09;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 25;
+		Durability = 5;
+		Speed = 5;
+		fxFunction = VfxFunction2;
+		Custom = false;
+	};
+	Kendo = {
+		Damage = 13;
+		BleedDamage = 0.25;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.65;
+		FinalDamage = 12;
+		FinalStunDuration = 0.85;
+		FinalKnockbackVelocity = 115;
+		FinalScreenShakeIntensity = 1.25;
+		Hitspeed = 0.1;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Kunai = {
+		Damage = 6;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction2;
+	};
+	["Kung Fu"] = {
+		Damage = 8;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Dragon = {
+		Damage = 12;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		FourthSkill = true;
+	};
+	Swiftstep = {
+		Damage = 21;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 20;
+		FinalStunDuration = 0.85;
+		FinalKnockbackVelocity = 85;
+		FinalScreenShakeIntensity = 1;
+		Hitspeed = 0.09;
+		timeDelay = {0.17};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 50;
+		Durability = 10;
+		Stamina = 30;
+		fxFunction = VfxFunction1;
+		Custom = false;
+		FourthSkill = true;
+	};
+	["Yamazaki Arts"] = {
+		Damage = 21;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 19;
+		FinalStunDuration = 0.85;
+		FinalKnockbackVelocity = 85;
+		FinalScreenShakeIntensity = 1;
+		Hitspeed = 0.03;
+		timeDelay = {0.17};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 50;
+		Durability = 10;
+		Stamina = 30;
+		fxFunction = VfxFunction1;
+		FourthSkill = true;
+	};
+	Karate = {
+		Damage = 8;
+		StunDuration = 0.85;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 12;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.08;
+		timeDelay = {0.17};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Taekwondo = {
+		Damage = 10;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 8;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.09;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 15;
+		Durability = 5;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	["Drunken Fist"] = {
+		Damage = 7;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 8;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.09;
+		timeDelay = {0.09};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.5);
+		Strength = 15;
+		Durability = 5;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Capoeira = {
+		Damage = 8;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Flamethrower = {
+		Damage = 8;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	["Advanced Taekwondo"] = {
+		Damage = 10;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 8;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.09;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Izana = {
+		Damage = 14;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.65;
+		FinalDamage = 12;
+		FinalStunDuration = 0.7;
+		FinalKnockbackVelocity = 100;
+		FinalScreenShakeIntensity = 1.2;
+		Hitspeed = 0.085;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Paladin = {
+		Damage = 16;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.6;
+		FinalDamage = 20;
+		FinalStunDuration = 0.8;
+		FinalKnockbackVelocity = 95;
+		FinalScreenShakeIntensity = 2;
+		Hitspeed = 0.1;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 50;
+		Durability = 15;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Senju = {
+		Damage = 15;
+		StunDuration = 0.65;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.6;
+		FinalDamage = 22;
+		FinalStunDuration = 0.75;
+		FinalKnockbackVelocity = 95;
+		FinalScreenShakeIntensity = 2;
+		Hitspeed = 0.085;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 15;
+		Durability = 5;
+		Stamina = 15;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Daewi = {
+		Damage = 16;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.9;
+		FinalDamage = 16;
+		FinalStunDuration = 0.75;
+		FinalKnockbackVelocity = 125;
+		FinalScreenShakeIntensity = 2;
+		Hitspeed = 0.1;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 25;
+		Durability = 5;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	["Advanced Capoeira"] = {
+		Damage = 9;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Toji = {
+		Damage = 8;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 5;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+	};
+	JeetKuneDo = {
+		Damage = 8;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	Saitama = {
+		Damage = 8;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 9;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	Gojo = {
+		Damage = 8;
+		StunDuration = 0.9;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 11;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	["War Fan"] = {
+		Damage = 8;
+		StunDuration = 1.25;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.08;
+		timeDelay = {0.21, -- : First try: K:0: attempt to index nil with 't'
+;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		Strength = 10;
+		Durability = 10;
+		Stamina = 5;
+		MasteryXp = 5;
+		fxFunction = VfxFunction1;
+	};
+	Kickboxing = {
+		Damage = 13;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 14;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.11;
+		timeDelay = {0.21};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.65);
+		HitboxSizeOffset = Vector3.new(0, 0, 1.14999);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	["Dryleaf Arts"] = {
+		Damage = 10;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.1};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -3);
+		HitboxSizeOffset = Vector3.new(1.5, 0, 1.5);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Pandora = {
+		Damage = 10;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.1};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.65);
+		HitboxSizeOffset = Vector3.new(0, 0, 1.14999);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	KusanagiPandora = {
+		Damage = 10;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.1};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.65);
+		HitboxSizeOffset = Vector3.new(0, 0, 1.14999);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Pandora1 = {
+		Damage = 10;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.01;
+		timeDelay = {0.1};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.65);
+		HitboxSizeOffset = Vector3.new(0, 0, 1.14999);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	["Wild Instinct"] = {
+		Damage = 9;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.11;
+		timeDelay = {0.21};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 15;
+		Durability = 10;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Bat = {
+		Damage = 15;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 14;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.23};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -3);
+		HitboxSizeOffset = Vector3.new(1.5, 0, 1.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	["Advanced Bat"] = {
+		Damage = 16;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 13;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.13;
+		timeDelay = {0.23};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -3);
+		HitboxSizeOffset = Vector3.new(1.60000, 0, 1.60000);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		FourthSkill = true;
+		fxFunction = VfxFunctionBat;
+		Custom = false;
+	};
+	Kizaru = {
+		Damage = 8;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(1, 0, 0.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Scythe = {
+		Damage = 8;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(1, 0, 0.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Cid = {
+		Damage = 8;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.18};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(1, 0, 0.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Rimuru = {
+		Damage = 8;
+		StunDuration = 1.1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(1, 0, 0.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	KenNoJutsu = {
+		Damage = 10;
+		StunDuration = 1.05;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.11;
+		timeDelay = {0.21};
+		AnimationSpeed = 1.15;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Wrestling = {
+		Damage = 16;
+		StunDuration = 0.75;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 24;
+		FinalStunDuration = 0.9;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.22};
+		AnimationSpeed = 1.15;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+		Custom = false;
+	};
+	Scar = {
+		Damage = 6;
+		StunDuration = 0.8;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.06;
+		timeDelay = {0.16};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -1.75);
+		HitboxSizeOffset = Vector3.new(0, 0, -0.25);
+		MasteryXp = 5;
+		Strength = 5;
+		Durability = 10;
+		Stamina = 5;
+		fxFunction = VfxFunction1;
+	};
+	Buddha = {
+		Damage = 10;
+		StunDuration = 1.05;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 10;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.12;
+		timeDelay = {0.22};
+		AnimationSpeed = 1.15;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	Lokhens = {
+		Damage = 8;
+		StunDuration = 1;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 5;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.1;
+		timeDelay = {0.19};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2.25);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		FourthSkill = true;
+		fxFunction = VfxFunction1;
+	};
+	Vergil = {
+		Damage = 11;
+		StunDuration = 1.45;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.16;
+		timeDelay = {0.22};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(1, 0, 1.5);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction2;
+	};
+	Luca = {
+		Damage = 11;
+		StunDuration = 1.3;
+		KnockbackVelocity = 0;
+		ScreenShakeIntensity = 0.5;
+		FinalDamage = 7;
+		FinalStunDuration = 0.6;
+		FinalKnockbackVelocity = 110;
+		FinalScreenShakeIntensity = 1.5;
+		Hitspeed = 0.12;
+		timeDelay = {0.22};
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.25);
+		MasteryXp = 5;
+		Strength = 18;
+		Durability = 7;
+		Stamina = 0;
+		fxFunction = VfxFunction1;
+	};
+	m2 = {
+		Stamina = 30;
+		Damage = 10;
+		StunDuration = 2.75;
+		KnockbackVelocity = 60;
+		RagdollDuration = 2.5;
+		iFrameDuration = 3.25;
+		ScreenShakeIntensity = 1.5;
+		Hitspeed = 0.2;
+		timeDelay = 1.75;
+		Hitbox = Hitboxes.BasicCombat;
+		HitboxPosOffset = CFrame.new(0, 0, -2);
+		HitboxSizeOffset = Vector3.new(0, 0, 0.5);
+		BlockBreak = true;
+		FinalCombo = true;
+		CooldownBypass = true;
+		MasteryXp = 10;
+		fxFunction = VfxFunction1;
+	};
+}
+local tbl_52 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 20;
+	Damage = 15;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 1826
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_51 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.Angles(math.pi, 0, 0), 75, VFX_upvr.LiverblowEffect.Attachment, nil, 2.5)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.Angles(math.pi, 0, 0), 75, VFX_upvr.LiverblowEffect.smoke2, nil, 2.5)
+	local clone_71 = SFX_upvr.Hit:Clone()
+	clone_71.Parent = arg1.RootPart
+	clone_71:Play()
+	if any_GetPlayerFromCharacter_result1_51 then
+		if any_GetPlayerFromCharacter_result1_51.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [91] #66
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [91] 66. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_71, 0.863)
+	-- KONSTANTERROR: [91] 66. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_52.fxFunction = fxFunction
+module.Liverblow = tbl_52
+local tbl_51 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 45;
+	Damage = 20;
+	StunDuration = 2;
+	KnockbackVelocity = 0;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 1879
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_3 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.Angles(math.pi, 0, 0), 75, VFX_upvr.LiverblowEffect.Attachment, nil, 2.5)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.Angles(math.pi, 0, 0), 75, VFX_upvr.LiverblowEffect.smoke2, nil, 2.5)
+	local clone_6 = SFX_upvr.Hit:Clone()
+	clone_6.Parent = arg1.RootPart
+	clone_6:Play()
+	if any_GetPlayerFromCharacter_result1_3 then
+		if any_GetPlayerFromCharacter_result1_3.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [91] #66
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [91] 66. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_6, 0.863)
+	-- KONSTANTERROR: [91] 66. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_51.fxFunction = fxFunction
+module["Low Blow"] = tbl_51
+module["Gazelle Punch"] = {
+	CustomHitReaction = true;
+	Type = "Rush";
+	Stamina = 30;
+	Damage = 20;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.6;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Hard Punch"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 15;
+	StunDuration = 0.6;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_34 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 30;
+	StunDuration = 0.5;
+	ScreenShakeIntensity = 0.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 1988
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_11 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(arg1.Parent.HumanoidRootPart.CFrame * CFrame.Angles(math.pi, 0, 0), 75, VFX_upvr.LiverblowEffect.Attachment, nil, 2.5)
+	local clone_23 = SFX_upvr.Hit:Clone()
+	clone_23.Parent = arg1.RootPart
+	clone_23:Play()
+	if any_GetPlayerFromCharacter_result1_11 then
+		if any_GetPlayerFromCharacter_result1_11.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [66] #48
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [66] 48. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_23, 0.863)
+	-- KONSTANTERROR: [66] 48. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_34.fxFunction = fxFunction
+module["Renewal Kicks"] = tbl_34
+local tbl_49 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 1;
+	KnockbackVelocity = 75;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2037
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_9 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_84 = VFX_upvr.SystemaCombo:Clone()
+	clone_84.CFrame = arg2.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_84.Size = Vector3.new(0, 1, 0)
+	clone_84.Transparency = 0
+	clone_84.Parent = workspace.Debris
+	local any_Create_result1_4 = TweenService_upvr:Create(clone_84, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_4:Play()
+	any_Create_result1_4:Destroy()
+	local any_Create_result1_18 = TweenService_upvr:Create(clone_84, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_18:Play()
+	any_Create_result1_18:Destroy()
+	game:GetService("Debris"):AddItem(clone_84, 1)
+	wait(0.1)
+	local clone = SFX_upvr.Hit:Clone()
+	clone.Parent = arg1.RootPart
+	clone:Play()
+	if any_GetPlayerFromCharacter_result1_9 then
+		if any_GetPlayerFromCharacter_result1_9.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_49.fxFunction = fxFunction
+module["Renewal Kicks Final"] = tbl_49
+module["Shin Hakai"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 15;
+	StunDuration = 0.6;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Overhead Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 25;
+	StunDuration = 0.6;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module.DTSSS = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 10;
+	StunDuration = 1.25;
+	KnockbackVelocity = 10;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.9;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0.5, 0, 0.5);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["DTSSS Final"] = {
+	CustomHitReaction = false;
+	Damage = 25;
+	StunDuration = 2.25;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2;
+	iFrameDuration = 2.75;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module.Sandevistan = {
+	Stamina = 45;
+}
+module.Thrust = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 45;
+	Damage = 12;
+	BleedDamage = 5;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction2;
+}
+module["Jab Rush"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 8;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.11;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Jab Rush Final"] = {
+	CustomHitReaction = false;
+	Damage = 12;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.11;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Leg Rush"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 6.6;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.25;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.15;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Leg Rush Final"] = {
+	CustomHitReaction = false;
+	Damage = 9;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.11;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Downward Elbow"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 10;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.16;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	ResetCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Getsuga Tenshou"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 5;
+	StunDuration = 0.15;
+	KnockbackVelocity = 75;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BypassPerfectBlock = true;
+	BlockBreak = true;
+	FinalCombo = true;
+	fxFunction = VfxFunction2;
+}
+module["Getsuga Tenshou Final"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Damage = 30;
+	StunDuration = 0.25;
+	KnockbackVelocity = 120;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = true;
+	KnockbackBypass = true;
+	BypassPerfectBlock = true;
+	BlockBreak = true;
+	FinalCombo = true;
+	Hitspeed = 0.1;
+	fxFunction = VfxFunction2;
+}
+local tbl_37 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	ExclusiveSkill = true;
+	Value = "JudgementCut";
+	Style = "Bat";
+	Stamina = 45;
+	Damage = 3;
+	StunDuration = 0.5;
+	KnockbackVelocity = 5;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -3);
+	HitboxSizeOffset = Vector3.new(3, 3, 3);
+	BlockBreak = false;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 2431
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_21 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_46 = SFX_upvr.Hit:Clone()
+	clone_46.Parent = arg1.RootPart
+	clone_46:Play()
+	if any_GetPlayerFromCharacter_result1_21 then
+		if any_GetPlayerFromCharacter_result1_21.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_46, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_37.fxFunction = fxFunction
+module["Judgement Cut"] = tbl_37
+local tbl_4 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 2.5;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	KnockbackVelocity = 10;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	BlockBreak = false;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 2472
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_32 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_66 = SFX_upvr.Hit:Clone()
+	clone_66.Parent = arg1.RootPart
+	clone_66:Play()
+	if any_GetPlayerFromCharacter_result1_32 then
+		if any_GetPlayerFromCharacter_result1_32.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_66, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_4.fxFunction = fxFunction
+module["Judgement Cut Finisher"] = tbl_4
+local tbl_41 = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 10;
+	StunDuration = 1;
+	KnockbackVelocity = 5;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -3);
+	HitboxSizeOffset = Vector3.new(3, 3, 3);
+	BlockBreak = false;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 2517
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_55 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_74 = SFX_upvr.Hit:Clone()
+	clone_74.Parent = arg1.RootPart
+	clone_74:Play()
+	if any_GetPlayerFromCharacter_result1_55 then
+		if any_GetPlayerFromCharacter_result1_55.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_74, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_41.fxFunction = fxFunction
+module.Severance = tbl_41
+local tbl_47 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 1;
+	RagdollDuration = 0.5;
+	iFrameDuration = 0;
+	KnockbackVelocity = 10;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	BlockBreak = false;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 2559
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_16 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_41 = SFX_upvr.Hit:Clone()
+	clone_41.Parent = arg1.RootPart
+	clone_41:Play()
+	if any_GetPlayerFromCharacter_result1_16 then
+		if any_GetPlayerFromCharacter_result1_16.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_41, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_47.fxFunction = fxFunction
+module["Kendo Finisher"] = tbl_47
+local tbl_30 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 150;
+	Damage = 0.05;
+	StunDuration = 1;
+	KnockbackVelocity = 1;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2607
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_54 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_43 = SFX_upvr.Hit:Clone()
+	clone_43.Parent = arg1.RootPart
+	clone_43:Play()
+	if any_GetPlayerFromCharacter_result1_54 then
+		if any_GetPlayerFromCharacter_result1_54.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_43, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_30.fxFunction = fxFunction
+module["Bicycle Kick"] = tbl_30
+local tbl_15 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 60;
+	Damage = 1;
+	StunDuration = 0.5;
+	KnockbackVelocity = 1;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2655
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_24 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_32 = SFX_upvr.Hit:Clone()
+	clone_32.Parent = arg1.RootPart
+	clone_32:Play()
+	if any_GetPlayerFromCharacter_result1_24 then
+		if any_GetPlayerFromCharacter_result1_24.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_32, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_15.fxFunction = fxFunction
+module["Kurono Barrage"] = tbl_15
+local tbl_50 = {
+	CustomHitReaction = false;
+	Damage = 5;
+	StunDuration = 3;
+	KnockbackVelocity = 50;
+	RagdollDuration = 3;
+	iFrameDuration = 3.5;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2702
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_50 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_60 = VFX_upvr.SystemaCombo:Clone()
+	clone_60.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_60.Size = Vector3.new(0, 1, 0)
+	clone_60.Transparency = 0
+	clone_60.Parent = workspace.Debris
+	local any_Create_result1 = TweenService_upvr:Create(clone_60, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1:Play()
+	any_Create_result1:Destroy()
+	local any_Create_result1_25 = TweenService_upvr:Create(clone_60, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_25:Play()
+	any_Create_result1_25:Destroy()
+	game:GetService("Debris"):AddItem(clone_60, 1)
+	wait(0.1)
+	local clone_17 = SFX_upvr.Hit:Clone()
+	clone_17.Parent = arg1.RootPart
+	clone_17:Play()
+	if any_GetPlayerFromCharacter_result1_50 then
+		if any_GetPlayerFromCharacter_result1_50.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_17, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_50.fxFunction = fxFunction
+module["Kurono Barrage Final"] = tbl_50
+local tbl_24 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 60;
+	Damage = 1;
+	StunDuration = 0.5;
+	KnockbackVelocity = 1;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2767
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_44 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_35 = SFX_upvr.Hit:Clone()
+	clone_35.Parent = arg1.RootPart
+	clone_35:Play()
+	if any_GetPlayerFromCharacter_result1_44 then
+		if any_GetPlayerFromCharacter_result1_44.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_35, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_24.fxFunction = fxFunction
+module["Systema Combo"] = tbl_24
+local tbl_14 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 3;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2814
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_45 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_61 = SFX_upvr.Hit:Clone()
+	clone_61.Parent = arg1.RootPart
+	clone_61:Play()
+	if any_GetPlayerFromCharacter_result1_45 then
+		if any_GetPlayerFromCharacter_result1_45.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_61, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_14.fxFunction = fxFunction
+module["Rapid Barrage"] = tbl_14
+local tbl_7 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 1;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2861
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_35 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_67 = VFX_upvr.SystemaCombo:Clone()
+	clone_67.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_67.Size = Vector3.new(0, 1, 0)
+	clone_67.Transparency = 0
+	clone_67.Parent = workspace.Debris
+	local any_Create_result1_17 = TweenService_upvr:Create(clone_67, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_17:Play()
+	any_Create_result1_17:Destroy()
+	local any_Create_result1_9 = TweenService_upvr:Create(clone_67, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_9:Play()
+	any_Create_result1_9:Destroy()
+	game:GetService("Debris"):AddItem(clone_67, 1)
+	wait(0.1)
+	local clone_69 = SFX_upvr.Hit:Clone()
+	clone_69.Parent = arg1.RootPart
+	clone_69:Play()
+	if any_GetPlayerFromCharacter_result1_35 then
+		if any_GetPlayerFromCharacter_result1_35.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_69, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_7.fxFunction = fxFunction
+module["Rapid Barrage Final"] = tbl_7
+local tbl_20 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 35;
+	Damage = 2.5;
+	BleedDamage = 0.25;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2926
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_56 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_82 = SFX_upvr.Slash:Clone()
+	clone_82.Parent = arg1.RootPart
+	clone_82:Play()
+	if any_GetPlayerFromCharacter_result1_56 then
+		if any_GetPlayerFromCharacter_result1_56.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_82, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_20.fxFunction = fxFunction
+module["Sawblade Rush"] = tbl_20
+local tbl_10 = {
+	CustomHitReaction = false;
+	Damage = 15;
+	BleedDamage = 10;
+	StunDuration = 1.65;
+	KnockbackVelocity = 85;
+	RagdollDuration = 1.65;
+	iFrameDuration = 2;
+	ScreenShakeIntensity = 1.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 2974
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_33 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_29 = VFX_upvr.SystemaCombo:Clone()
+	clone_29.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_29.Size = Vector3.new(0, 1, 0)
+	clone_29.Transparency = 0
+	clone_29.Parent = workspace.Debris
+	local any_Create_result1_33 = TweenService_upvr:Create(clone_29, TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_33:Play()
+	any_Create_result1_33:Destroy()
+	local any_Create_result1_14 = TweenService_upvr:Create(clone_29, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+		Size = Vector3.new(15, 0, 15);
+	})
+	any_Create_result1_14:Play()
+	any_Create_result1_14:Destroy()
+	game:GetService("Debris"):AddItem(clone_29, 1)
+	wait(0.1)
+	local clone_20 = SFX_upvr.Slash:Clone()
+	clone_20.Parent = arg1.RootPart
+	clone_20:Play()
+	if any_GetPlayerFromCharacter_result1_33 then
+		if any_GetPlayerFromCharacter_result1_33.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_20, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_10.fxFunction = fxFunction
+module["Sawblade Rush Final"] = tbl_10
+local tbl_9 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 60;
+	Damage = 25;
+	StunDuration = 2.6;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3041
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_26 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_85 = VFX_upvr.SystemaCombo:Clone()
+	clone_85.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_85.Size = Vector3.new(0, 1, 0)
+	clone_85.Transparency = 0
+	clone_85.Parent = workspace.Debris
+	local any_Create_result1_42 = TweenService_upvr:Create(clone_85, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_42:Play()
+	any_Create_result1_42:Destroy()
+	local any_Create_result1_13 = TweenService_upvr:Create(clone_85, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_13:Play()
+	any_Create_result1_13:Destroy()
+	game:GetService("Debris"):AddItem(clone_85, 1)
+	wait(0.1)
+	local clone_78 = SFX_upvr.Hit:Clone()
+	clone_78.Parent = arg1.RootPart
+	clone_78:Play()
+	if any_GetPlayerFromCharacter_result1_26 then
+		if any_GetPlayerFromCharacter_result1_26.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_78, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_9.fxFunction = fxFunction
+module["Mamba Takedown"] = tbl_9
+local tbl_38 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 60;
+	Damage = 1;
+	StunDuration = 0.5;
+	KnockbackVelocity = 1;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3105
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_42 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_22 = VFX_upvr.SystemaCombo:Clone()
+	clone_22.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_22.Size = Vector3.new(0, 1, 0)
+	clone_22.Transparency = 0
+	clone_22.Parent = workspace.Debris
+	local any_Create_result1_10 = TweenService_upvr:Create(clone_22, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_10:Play()
+	any_Create_result1_10:Destroy()
+	local any_Create_result1_5 = TweenService_upvr:Create(clone_22, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_5:Play()
+	any_Create_result1_5:Destroy()
+	game:GetService("Debris"):AddItem(clone_22, 1)
+	wait(0.1)
+	local clone_21 = SFX_upvr.Hit:Clone()
+	clone_21.Parent = arg1.RootPart
+	clone_21:Play()
+	if any_GetPlayerFromCharacter_result1_42 then
+		if any_GetPlayerFromCharacter_result1_42.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_21, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_38.fxFunction = fxFunction
+module["Dempsey Roll"] = tbl_38
+local tbl_23 = {
+	CustomHitReaction = true;
+	Damage = 10;
+	StunDuration = 2.6;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3169
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_15 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_37 = VFX_upvr.SystemaCombo:Clone()
+	clone_37.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_37.Size = Vector3.new(0, 1, 0)
+	clone_37.Transparency = 0
+	clone_37.Parent = workspace.Debris
+	local any_Create_result1_24 = TweenService_upvr:Create(clone_37, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_24:Play()
+	any_Create_result1_24:Destroy()
+	local any_Create_result1_19 = TweenService_upvr:Create(clone_37, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_19:Play()
+	any_Create_result1_19:Destroy()
+	game:GetService("Debris"):AddItem(clone_37, 1)
+	wait(0.1)
+	local clone_8 = SFX_upvr.Hit:Clone()
+	clone_8.Parent = arg1.RootPart
+	clone_8:Play()
+	if any_GetPlayerFromCharacter_result1_15 then
+		if any_GetPlayerFromCharacter_result1_15.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_8, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_23.fxFunction = fxFunction
+module["Dempsey Roll Final"] = tbl_23
+local tbl_16 = {
+	CustomHitReaction = false;
+	Damage = 10;
+	StunDuration = 2.6;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3233
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_2 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_26 = VFX_upvr.SystemaCombo:Clone()
+	clone_26.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_26.Size = Vector3.new(0, 1, 0)
+	clone_26.Transparency = 0
+	clone_26.Parent = workspace.Debris
+	local any_Create_result1_11 = TweenService_upvr:Create(clone_26, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_11:Play()
+	any_Create_result1_11:Destroy()
+	local any_Create_result1_43 = TweenService_upvr:Create(clone_26, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_43:Play()
+	any_Create_result1_43:Destroy()
+	game:GetService("Debris"):AddItem(clone_26, 1)
+	wait(0.1)
+	local clone_77 = SFX_upvr.Hit:Clone()
+	clone_77.Parent = arg1.RootPart
+	clone_77:Play()
+	if any_GetPlayerFromCharacter_result1_2 then
+		if any_GetPlayerFromCharacter_result1_2.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_77, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_16.fxFunction = fxFunction
+module["Systema Combo Final"] = tbl_16
+local tbl_3 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 60;
+	Damage = 0.25;
+	StunDuration = 0.5;
+	KnockbackVelocity = 1;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3298
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_34 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_34 = SFX_upvr.Hit:Clone()
+	clone_34.Parent = arg1.RootPart
+	clone_34:Play()
+	if any_GetPlayerFromCharacter_result1_34 then
+		if any_GetPlayerFromCharacter_result1_34.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_34, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_3.fxFunction = fxFunction
+module["Party Table"] = tbl_3
+local tbl = {
+	CustomHitReaction = false;
+	Damage = 10;
+	StunDuration = 2.6;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3345
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_31 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_54 = VFX_upvr.SystemaCombo:Clone()
+	clone_54.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_54.Size = Vector3.new(0, 1, 0)
+	clone_54.Transparency = 0
+	clone_54.Parent = workspace.Debris
+	local any_Create_result1_23 = TweenService_upvr:Create(clone_54, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_23:Play()
+	any_Create_result1_23:Destroy()
+	local any_Create_result1_22 = TweenService_upvr:Create(clone_54, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_22:Play()
+	any_Create_result1_22:Destroy()
+	game:GetService("Debris"):AddItem(clone_54, 1)
+	wait(0.1)
+	local clone_5 = SFX_upvr.Hit:Clone()
+	clone_5.Parent = arg1.RootPart
+	clone_5:Play()
+	if any_GetPlayerFromCharacter_result1_31 then
+		if any_GetPlayerFromCharacter_result1_31.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_5, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl.fxFunction = fxFunction
+module["Party Table Final"] = tbl
+module["Combo Kicks"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 30;
+	StunDuration = 0.75;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_19 = {
+	CustomHitReaction = false;
+	Damage = 15;
+	StunDuration = 1;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3440
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_49 = VFX_upvr.SystemaCombo:Clone()
+	clone_49.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_49.Size = Vector3.new(0, 1, 0)
+	clone_49.Transparency = 0
+	clone_49.Parent = workspace.Debris
+	local any_Create_result1_20 = TweenService_upvr:Create(clone_49, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_20:Play()
+	any_Create_result1_20:Destroy()
+	local any_Create_result1_47 = TweenService_upvr:Create(clone_49, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_47:Play()
+	any_Create_result1_47:Destroy()
+	game:GetService("Debris"):AddItem(clone_49, 1)
+	wait(0.1)
+	local clone_12 = SFX_upvr.Hit:Clone()
+	clone_12.Parent = arg1.RootPart
+	clone_12:Play()
+	if any_GetPlayerFromCharacter_result1 then
+		if any_GetPlayerFromCharacter_result1.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_12, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_19.fxFunction = fxFunction
+module["Kung Fu Skill Final"] = tbl_19
+module["Taehoon Kick Combo"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 35;
+	Damage = 25;
+	StunDuration = 0.9;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.9;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_28 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	RagdollDuration = 1.5;
+	iFrameDuration = 0.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3535
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_23 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_83 = VFX_upvr.SystemaCombo:Clone()
+	clone_83.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_83.Size = Vector3.new(0, 1, 0)
+	clone_83.Transparency = 0
+	clone_83.Parent = workspace.Debris
+	local any_Create_result1_41 = TweenService_upvr:Create(clone_83, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_41:Play()
+	any_Create_result1_41:Destroy()
+	local any_Create_result1_45 = TweenService_upvr:Create(clone_83, TweenInfo.new(0.15, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+		Size = Vector3.new(25, 0, 25);
+	})
+	any_Create_result1_45:Play()
+	any_Create_result1_45:Destroy()
+	game:GetService("Debris"):AddItem(clone_83, 1)
+	local clone_9 = SFX_upvr.Hit:Clone()
+	clone_9.Parent = arg1.RootPart
+	clone_9:Play()
+	if any_GetPlayerFromCharacter_result1_23 then
+		if any_GetPlayerFromCharacter_result1_23.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_9, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_28.fxFunction = fxFunction
+module["Taehoon Kick Combo Final"] = tbl_28
+module["Senju Kicks"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 35;
+	Damage = 45;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_18 = {
+	CustomHitReaction = false;
+	Damage = 35;
+	StunDuration = 1.5;
+	KnockbackVelocity = 25;
+	RagdollDuration = 1.5;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3629
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_36 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_18 = VFX_upvr.SystemaCombo:Clone()
+	clone_18.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_18.Size = Vector3.new(0, 1, 0)
+	clone_18.Transparency = 0
+	clone_18.Parent = workspace.Debris
+	local any_Create_result1_8 = TweenService_upvr:Create(clone_18, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_8:Play()
+	any_Create_result1_8:Destroy()
+	local any_Create_result1_50 = TweenService_upvr:Create(clone_18, TweenInfo.new(0.15, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+		Size = Vector3.new(25, 0, 25);
+	})
+	any_Create_result1_50:Play()
+	any_Create_result1_50:Destroy()
+	game:GetService("Debris"):AddItem(clone_18, 1)
+	local clone_70 = SFX_upvr.Hit:Clone()
+	clone_70.Parent = arg1.RootPart
+	clone_70:Play()
+	if any_GetPlayerFromCharacter_result1_36 then
+		if any_GetPlayerFromCharacter_result1_36.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_70, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_18.fxFunction = fxFunction
+module["Senju Kicks Final"] = tbl_18
+local tbl_8 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Damage = 100;
+	Stamina = 85;
+	StunDuration = 2;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.25;
+	iFrameDuration = 2.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3694
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_7 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_75 = VFX_upvr.SystemaCombo:Clone()
+	clone_75.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_75.Size = Vector3.new(0, 1, 0)
+	clone_75.Transparency = 0
+	clone_75.Parent = workspace.Debris
+	local any_Create_result1_31 = TweenService_upvr:Create(clone_75, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_31:Play()
+	any_Create_result1_31:Destroy()
+	local any_Create_result1_12 = TweenService_upvr:Create(clone_75, TweenInfo.new(0.125, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		Size = Vector3.new(15, 0, 15);
+	})
+	any_Create_result1_12:Play()
+	any_Create_result1_12:Destroy()
+	game:GetService("Debris"):AddItem(clone_75, 0.5)
+	local clone_3 = SFX_upvr.Hit:Clone()
+	clone_3.Parent = arg1.RootPart
+	clone_3:Play()
+	if any_GetPlayerFromCharacter_result1_7 then
+		if any_GetPlayerFromCharacter_result1_7.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_3, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_8.fxFunction = fxFunction
+module["Paladin Blow"] = tbl_8
+local tbl_40 = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 35;
+	Damage = 45;
+	StunDuration = 0.9;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.9;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3762
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_10 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_24 = VFX_upvr.SystemaCombo:Clone()
+	clone_24.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_24.Size = Vector3.new(0, 1, 0)
+	clone_24.Transparency = 0
+	clone_24.Parent = workspace.Debris
+	local any_Create_result1_39 = TweenService_upvr:Create(clone_24, TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_39:Play()
+	any_Create_result1_39:Destroy()
+	local any_Create_result1_40 = TweenService_upvr:Create(clone_24, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+		Size = Vector3.new(math.random(15, 25), 0, math.random(15, 25));
+	})
+	any_Create_result1_40:Play()
+	any_Create_result1_40:Destroy()
+	game:GetService("Debris"):AddItem(clone_24, 0.75)
+	local clone_19 = SFX_upvr.Hit:Clone()
+	clone_19.Parent = arg1.RootPart
+	clone_19:Play()
+	if any_GetPlayerFromCharacter_result1_10 then
+		if any_GetPlayerFromCharacter_result1_10.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [145] #101
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [145] 101. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_19, 0.863)
+	-- KONSTANTERROR: [145] 101. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_40.fxFunction = fxFunction
+module["Hook Combo"] = tbl_40
+local tbl_17 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	RagdollDuration = 1.5;
+	iFrameDuration = 0.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3824
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_40 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_44 = VFX_upvr.SystemaCombo:Clone()
+	clone_44.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_44.Size = Vector3.new(0, 1, 0)
+	clone_44.Transparency = 0
+	clone_44.Parent = workspace.Debris
+	local any_Create_result1_26 = TweenService_upvr:Create(clone_44, TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_26:Play()
+	any_Create_result1_26:Destroy()
+	local any_Create_result1_46 = TweenService_upvr:Create(clone_44, TweenInfo.new(0.45, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		Size = Vector3.new(45, 0, 45);
+	})
+	any_Create_result1_46:Play()
+	any_Create_result1_46:Destroy()
+	game:GetService("Debris"):AddItem(clone_44, 1.5)
+	local clone_64 = SFX_upvr.Hit:Clone()
+	clone_64.Parent = arg1.RootPart
+	clone_64:Play()
+	if any_GetPlayerFromCharacter_result1_40 then
+		if any_GetPlayerFromCharacter_result1_40.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_64, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_17.fxFunction = fxFunction
+module["Hook Combo Final"] = tbl_17
+local tbl_43 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 2;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3886
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_14 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_80 = SFX_upvr.Hit:Clone()
+	clone_80.Parent = arg1.RootPart
+	clone_80:Play()
+	if any_GetPlayerFromCharacter_result1_14 then
+		if any_GetPlayerFromCharacter_result1_14.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_80, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_43.fxFunction = fxFunction
+module["Triple Kick"] = tbl_43
+local tbl_12 = {
+	CustomHitReaction = false;
+	Damage = 15;
+	StunDuration = 2.6;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3933
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_4 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_15 = VFX_upvr.SystemaCombo:Clone()
+	clone_15.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_15.Size = Vector3.new(0, 1, 0)
+	clone_15.Transparency = 0
+	clone_15.Parent = workspace.Debris
+	local any_Create_result1_49 = TweenService_upvr:Create(clone_15, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_49:Play()
+	any_Create_result1_49:Destroy()
+	local any_Create_result1_27 = TweenService_upvr:Create(clone_15, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_27:Play()
+	any_Create_result1_27:Destroy()
+	game:GetService("Debris"):AddItem(clone_15, 1)
+	wait(0.1)
+	local clone_50 = SFX_upvr.Hit:Clone()
+	clone_50.Parent = arg1.RootPart
+	clone_50:Play()
+	if any_GetPlayerFromCharacter_result1_4 then
+		if any_GetPlayerFromCharacter_result1_4.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_50, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_12.fxFunction = fxFunction
+module["Triple Kick Final"] = tbl_12
+local tbl_54 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 35;
+	Damage = 6;
+	StunDuration = 0.6;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	Hitspeed = 0.45;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 3997
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_6 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_31 = SFX_upvr.Hit:Clone()
+	clone_31.Parent = arg1.RootPart
+	clone_31:Play()
+	if any_GetPlayerFromCharacter_result1_6 then
+		if any_GetPlayerFromCharacter_result1_6.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_31, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_54.fxFunction = fxFunction
+module["Raging Kicks"] = tbl_54
+local tbl_26 = {
+	CustomHitReaction = false;
+	Damage = 20;
+	StunDuration = 2;
+	KnockbackVelocity = 50;
+	RagdollDuration = 2.5;
+	iFrameDuration = 2.55;
+	ScreenShakeIntensity = 2;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 4044
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_5 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_38 = VFX_upvr.SystemaCombo:Clone()
+	clone_38.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_38.Size = Vector3.new(0, 1, 0)
+	clone_38.Transparency = 0
+	clone_38.Parent = workspace.Debris
+	local any_Create_result1_48 = TweenService_upvr:Create(clone_38, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_48:Play()
+	any_Create_result1_48:Destroy()
+	local any_Create_result1_29 = TweenService_upvr:Create(clone_38, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_29:Play()
+	any_Create_result1_29:Destroy()
+	game:GetService("Debris"):AddItem(clone_38, 1)
+	local clone_27 = SFX_upvr.Hit:Clone()
+	clone_27.Parent = arg1.RootPart
+	clone_27:Play()
+	if any_GetPlayerFromCharacter_result1_5 then
+		if any_GetPlayerFromCharacter_result1_5.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_27, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_26.fxFunction = fxFunction
+module["Raging Kicks Final"] = tbl_26
+local tbl_36 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 35;
+	Damage = 10;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.75;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 4107
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_13 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_4 = SFX_upvr.Hit:Clone()
+	clone_4.Parent = arg1.RootPart
+	clone_4:Play()
+	if any_GetPlayerFromCharacter_result1_13 then
+		if any_GetPlayerFromCharacter_result1_13.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_4, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_36.fxFunction = fxFunction
+module["Double Chop"] = tbl_36
+local tbl_46 = {
+	CustomHitReaction = false;
+	Damage = 40;
+	StunDuration = 1;
+	KnockbackVelocity = 65;
+	RagdollDuration = 1;
+	iFrameDuration = 1;
+	ScreenShakeIntensity = 3;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 4154
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_17 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_2 = VFX_upvr.SystemaCombo:Clone()
+	clone_2.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_2.Size = Vector3.new(0, 1, 0)
+	clone_2.Transparency = 0
+	clone_2.Parent = workspace.Debris
+	local any_Create_result1_36 = TweenService_upvr:Create(clone_2, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_36:Play()
+	any_Create_result1_36:Destroy()
+	local any_Create_result1_7 = TweenService_upvr:Create(clone_2, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_7:Play()
+	any_Create_result1_7:Destroy()
+	game:GetService("Debris"):AddItem(clone_2, 1)
+	local clone_13 = SFX_upvr.Hit:Clone()
+	clone_13.Parent = arg1.RootPart
+	clone_13:Play()
+	if any_GetPlayerFromCharacter_result1_17 then
+		if any_GetPlayerFromCharacter_result1_17.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [131] #90
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [131] 90. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_13, 0.863)
+	-- KONSTANTERROR: [131] 90. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_46.fxFunction = fxFunction
+module["Double Chop Final"] = tbl_46
+module["Sync Grab"] = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 30;
+	Damage = 5;
+	StunDuration = 0.15;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+local tbl_21 = {
+	CustomHitReaction = false;
+	Damage = 15;
+	StunDuration = 0.5;
+	KnockbackVelocity = 50;
+	RagdollDuration = 0;
+	iFrameDuration = 0;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 4241
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_22 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_39 = VFX_upvr.SystemaCombo:Clone()
+	clone_39.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_39.Size = Vector3.new(0, 1, 0)
+	clone_39.Transparency = 0
+	clone_39.Parent = workspace.Debris
+	local any_Create_result1_32 = TweenService_upvr:Create(clone_39, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_32:Play()
+	any_Create_result1_32:Destroy()
+	local any_Create_result1_28 = TweenService_upvr:Create(clone_39, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_28:Play()
+	any_Create_result1_28:Destroy()
+	game:GetService("Debris"):AddItem(clone_39, 1)
+	wait(0.1)
+	local clone_73 = SFX_upvr.Hit:Clone()
+	clone_73.Parent = arg1.RootPart
+	clone_73:Play()
+	if any_GetPlayerFromCharacter_result1_22 then
+		if any_GetPlayerFromCharacter_result1_22.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_73, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_21.fxFunction = fxFunction
+module["Sync Grab Final"] = tbl_21
+module["White Fang"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 30;
+	Damage = 10;
+	StunDuration = 0.5;
+	KnockbackVelocity = 160;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["White Fang Final"] = {
+	CustomHitReaction = false;
+	Damage = 10;
+	StunDuration = 1;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Terano Skill"] = {
+	CustomHitReaction = false;
+	ClanSkill = true;
+	Clan = "Terano";
+	Type = "Finisher";
+	Stamina = 20;
+	Damage = 75;
+	StunDuration = 0.6;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.6;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Terano Skill Final"] = {
+	CustomHitReaction = false;
+	Damage = 10;
+	StunDuration = 0.5;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.6;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Side Sweep"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 20;
+	FinalDamage = 20;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Senju Sweep"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 25;
+	FinalDamage = 50;
+	FinalStunDuration = 0.45;
+	FinalKnockbackVelocity = 95;
+	ScreenShakeIntensity = 2.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Saints Counter"] = {
+	CustomHitReaction = true;
+	Type = "Counter";
+	Stamina = 20;
+	Damage = 40;
+	StunDuration = 2.5;
+	KnockbackVelocity = 110;
+	BlockBreak = true;
+	FinalCombo = false;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Gojo Red"] = {
+	ExclusiveSkill = true;
+	Value = "GojoRed";
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	FinalDamage = 25;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 200;
+	ScreenShakeIntensity = 2;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, 0);
+	HitboxSizeOffset = Vector3.new(30, 0, 30);
+	BlockBreak = true;
+	FinalCombo = true;
+	HitboxBypass = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Smd Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	Damage = 110;
+	StunDuration = 2.75;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3;
+	ScreenShakeIntensity = 2.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, 0);
+	HitboxSizeOffset = Vector3.new(10, 10, 10);
+	BlockBreak = true;
+	FinalCombo = true;
+	HitboxBypass = true;
+	fxFunction = VfxFunction1;
+}
+module["Forward Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 20;
+	FinalDamage = 20;
+	FinalStunDuration = 0.5;
+	FinalKnockbackVelocity = 50;
+	ScreenShakeIntensity = 1.565;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.46;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Side Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 20;
+	FinalDamage = 9;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Lucky Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 60;
+	FinalDamage = 10;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Ghost Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 60;
+	FinalDamage = 10;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module.Yukusakatami = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 45;
+	FinalDamage = 25;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Piercing Knee"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 30;
+	FinalDamage = 18;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 90;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.2;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Spinning Kick"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 30;
+	Damage = 20;
+	StunDuration = 2;
+	KnockbackVelocity = 110;
+	RagdollDuration = 2;
+	iFrameDuration = 0;
+	UpKnockback = true;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Pierre Kick"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 45;
+	FinalDamage = 25;
+	FinalStunDuration = 2;
+	FinalKnockbackVelocity = 65;
+	iFrameDuration = 0.5;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.3;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	KnockbackBypass = true;
+	CooldownBypass = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Kawaragi Skill"] = {
+	CustomHitReaction = false;
+	ClanSkill = true;
+	Clan = "Kawaragi";
+	Type = "Extender";
+	Stamina = 15;
+	Damage = 35;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_53 = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 40;
+	FinalDamage = 50;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 4837
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_41 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_48 = VFX_upvr.SystemaCombo:Clone()
+	clone_48.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_48.Size = Vector3.new(0, 1, 0)
+	clone_48.Transparency = 0
+	clone_48.Parent = workspace.Debris
+	local any_Create_result1_21 = TweenService_upvr:Create(clone_48, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_21:Play()
+	any_Create_result1_21:Destroy()
+	local any_Create_result1_16 = TweenService_upvr:Create(clone_48, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_16:Play()
+	any_Create_result1_16:Destroy()
+	game:GetService("Debris"):AddItem(clone_48, 1)
+	wait(0.1)
+	local clone_76 = SFX_upvr.Hit:Clone()
+	clone_76.Parent = arg1.RootPart
+	clone_76:Play()
+	if any_GetPlayerFromCharacter_result1_41 then
+		if any_GetPlayerFromCharacter_result1_41.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_76, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_53.fxFunction = fxFunction
+module["Brazillian Kick"] = tbl_53
+module["Flying Knee"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 20;
+	FinalDamage = 50;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, 0);
+	BlockBreak = true;
+	FinalCombo = true;
+	ResetCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Overhead Slam"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 55;
+	Damage = 65;
+	StunDuration = 2.25;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.25;
+	iFrameDuration = 2.45;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.517;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Axe Kick"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 20;
+	Damage = 40;
+	StunDuration = 2.75;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["360 Kick"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 30;
+	Damage = 6;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Rising Fist"] = {
+	CustomHitReaction = false;
+	Type = "Finisher";
+	Stamina = 30;
+	FinalDamage = 20;
+	FinalStunDuration = 0.2;
+	FinalKnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.6;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Tiger Drop"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 10;
+	FinalDamage = 30;
+	FinalStunDuration = 0.6;
+	FinalKnockbackVelocity = 140;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Kurokawa Skill"] = {
+	CustomHitReaction = false;
+	ClanSkill = true;
+	Clan = "Kurokawa";
+	Type = "Counter";
+	Stamina = 25;
+	Damage = 20;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Sake Counter"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 30;
+	Damage = 10;
+	StunDuration = 1.5;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Ron Kick"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 30;
+	Damage = 40;
+	StunDuration = 0.75;
+	KnockbackVelocity = 0;
+	BlockBreak = true;
+	FinalCombo = false;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Manji Kick"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 35;
+	Damage = 60;
+	StunDuration = 3;
+	KnockbackVelocity = 150;
+	BlockBreak = true;
+	FinalCombo = false;
+	ScreenShakeIntensity = 2;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Saints Kick"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 40;
+	Damage = 40;
+	StunDuration = 0.75;
+	KnockbackVelocity = 110;
+	BlockBreak = true;
+	FinalCombo = true;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Knee Thrust"] = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 40;
+	Damage = 40;
+	StunDuration = 0.75;
+	KnockbackVelocity = 110;
+	BlockBreak = true;
+	FinalCombo = true;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module.Foresight = {
+	Type = "Counter";
+	Stamina = 1;
+}
+module["Ultra Instinct"] = {
+	Type = "Other";
+	Stamina = 100;
+}
+module.Copy1 = {
+	Type = "Other";
+	ClanSkill = true;
+	Clan = "Seong";
+	Stamina = 50;
+}
+module.Copy2 = {
+	Type = "Other";
+	ClanSkill = true;
+	Clan = "Park";
+	Stamina = 40;
+}
+module["Infinite Block"] = {
+	Type = "Other";
+	ClanSkill = true;
+	Clan = "Kim";
+	Stamina = 1;
+}
+module["Opp Exterminator"] = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 45;
+	StunDuration = 3;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_13 = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 20;
+	Damage = 30;
+	StunDuration = 2.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 2;
+	ScreenShakeBypass = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 5248
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_8 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_47 = SFX_upvr.Hit:Clone()
+	clone_47.Parent = arg1.RootPart
+	clone_47:Play()
+	if any_GetPlayerFromCharacter_result1_8 then
+		if any_GetPlayerFromCharacter_result1_8.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_47, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_13.fxFunction = fxFunction
+module.Suplex = tbl_13
+local tbl_22 = {
+	CustomHitReaction = false;
+	Type = "Counter";
+	Stamina = 20;
+	Damage = 15;
+	StunDuration = 2.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 2;
+	ScreenShakeBypass = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 5289
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_53 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_33 = SFX_upvr.Hit:Clone()
+	clone_33.Parent = arg1.RootPart
+	clone_33:Play()
+	if any_GetPlayerFromCharacter_result1_53 then
+		if any_GetPlayerFromCharacter_result1_53.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_33, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_22.fxFunction = fxFunction
+module["Kota Counter"] = tbl_22
+module["Front Slam"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 30;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Jozie Slam"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 30;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Shoulder Slam"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 30;
+	StunDuration = 2;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module.Freakdance = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 30;
+	StunDuration = 4;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+local tbl_48 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 20;
+	StunDuration = 4;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5441
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_19 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_72 = VFX_upvr.SystemaCombo:Clone()
+	clone_72.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_72.Size = Vector3.new(0, 1, 0)
+	clone_72.Transparency = 0
+	clone_72.Parent = workspace.Debris
+	local any_Create_result1_2 = TweenService_upvr:Create(clone_72, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_2:Play()
+	any_Create_result1_2:Destroy()
+	local any_Create_result1_30 = TweenService_upvr:Create(clone_72, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_30:Play()
+	any_Create_result1_30:Destroy()
+	game:GetService("Debris"):AddItem(clone_72, 1)
+	wait(0.1)
+	local clone_57 = SFX_upvr.Hit:Clone()
+	clone_57.Parent = arg1.RootPart
+	clone_57:Play()
+	if any_GetPlayerFromCharacter_result1_19 then
+		if any_GetPlayerFromCharacter_result1_19.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_57, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_48.fxFunction = fxFunction
+module["Sauce Skill"] = tbl_48
+local tbl_25 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 30;
+	StunDuration = 4;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = true;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5506
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_12 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_30 = VFX_upvr.SystemaCombo:Clone()
+	clone_30.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_30.Size = Vector3.new(0, 1, 0)
+	clone_30.Transparency = 0
+	clone_30.Parent = workspace.Debris
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.new(0, -3, 0), 75, VFX_upvr.SauceSkillExplosion.Attachment, nil, 2.5)
+	local any_Create_result1_38 = TweenService_upvr:Create(clone_30, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_38:Play()
+	any_Create_result1_38:Destroy()
+	local any_Create_result1_6 = TweenService_upvr:Create(clone_30, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_6:Play()
+	any_Create_result1_6:Destroy()
+	game:GetService("Debris"):AddItem(clone_30, 1)
+	wait(0.1)
+	local clone_28 = SFX_upvr.Hit:Clone()
+	clone_28.Parent = arg1.RootPart
+	clone_28:Play()
+	if any_GetPlayerFromCharacter_result1_12 then
+		if any_GetPlayerFromCharacter_result1_12.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [160] #111
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [160] 111. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_28, 0.863)
+	-- KONSTANTERROR: [160] 111. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_25.fxFunction = fxFunction
+module["Sauce Skill Final"] = tbl_25
+local tbl_45 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 10;
+	StunDuration = 4;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5571
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_52 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_7 = VFX_upvr.SystemaCombo:Clone()
+	clone_7.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_7.Size = Vector3.new(0, 1, 0)
+	clone_7.Transparency = 0
+	clone_7.Parent = workspace.Debris
+	local any_Create_result1_37 = TweenService_upvr:Create(clone_7, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_37:Play()
+	any_Create_result1_37:Destroy()
+	local any_Create_result1_35 = TweenService_upvr:Create(clone_7, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_35:Play()
+	any_Create_result1_35:Destroy()
+	game:GetService("Debris"):AddItem(clone_7, 1)
+	wait(0.1)
+	local clone_25 = SFX_upvr.Hit:Clone()
+	clone_25.Parent = arg1.RootPart
+	clone_25:Play()
+	if any_GetPlayerFromCharacter_result1_52 then
+		if any_GetPlayerFromCharacter_result1_52.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_25, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_45.fxFunction = fxFunction
+module["Headstand Kick"] = tbl_45
+local tbl_42 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 30;
+	StunDuration = 3;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5636
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_49 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_51 = VFX_upvr.SystemaCombo:Clone()
+	clone_51.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_51.Size = Vector3.new(0, 1, 0)
+	clone_51.Transparency = 0
+	clone_51.Parent = workspace.Debris
+	VFX_upvr.vfxEvent:FireAllClients(arg1.RootPart.CFrame * CFrame.new(0, -3, 0), 75, VFX_upvr.SlamEffect.Attachment, nil, 2.5)
+	local any_Create_result1_15 = TweenService_upvr:Create(clone_51, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_15:Play()
+	any_Create_result1_15:Destroy()
+	local any_Create_result1_34 = TweenService_upvr:Create(clone_51, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_34:Play()
+	any_Create_result1_34:Destroy()
+	game:GetService("Debris"):AddItem(clone_51, 1)
+	wait(0.1)
+	local clone_52 = SFX_upvr.Hit:Clone()
+	clone_52.Parent = arg1.RootPart
+	clone_52:Play()
+	if any_GetPlayerFromCharacter_result1_49 then
+		if any_GetPlayerFromCharacter_result1_49.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [160] #111
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [160] 111. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_52, 0.863)
+	-- KONSTANTERROR: [160] 111. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_42.fxFunction = fxFunction
+module["Headstand Kick Final"] = tbl_42
+module["Yoshi Grab"] = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 50;
+	StunDuration = 2;
+	RagdollDuration = 2;
+	KnockbackVelocity = 0;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+local tbl_44 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 10;
+	StunDuration = 0.1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5730
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_27 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_14 = SFX_upvr.Hit:Clone()
+	clone_14.Parent = arg1.RootPart
+	clone_14:Play()
+	if any_GetPlayerFromCharacter_result1_27 then
+		if any_GetPlayerFromCharacter_result1_27.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_14, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_44.fxFunction = fxFunction
+module["Dabo Grab"] = tbl_44
+local tbl_39 = {
+	CustomHitReaction = true;
+	Damage = 18;
+	StunDuration = 0.2;
+	KnockbackVelocity = 150;
+	ScreenShakeIntensity = 1.5;
+	ScreenShakeBypass = false;
+	reverseKnockback = true;
+	BlockBreak = true;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 5768
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_48 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_45 = SFX_upvr.Hit:Clone()
+	clone_45.Parent = arg1.RootPart
+	clone_45:Play()
+	if any_GetPlayerFromCharacter_result1_48 then
+		if any_GetPlayerFromCharacter_result1_48.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_45, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_39.fxFunction = fxFunction
+module["Dabo Grab Final"] = tbl_39
+local tbl_56 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 3;
+	StunDuration = 0.1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5814
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_47 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_68 = SFX_upvr.Hit:Clone()
+	clone_68.Parent = arg1.RootPart
+	clone_68:Play()
+	if any_GetPlayerFromCharacter_result1_47 then
+		if any_GetPlayerFromCharacter_result1_47.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_68, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_56.fxFunction = fxFunction
+module["Grappler Assault"] = tbl_56
+local tbl_35 = {
+	CustomHitReaction = true;
+	Damage = 7;
+	StunDuration = 0.2;
+	KnockbackVelocity = 150;
+	ScreenShakeIntensity = 1.5;
+	ScreenShakeBypass = false;
+	reverseKnockback = true;
+	BlockBreak = true;
+	FinalCombo = true;
+}
+local function fxFunction(arg1, arg2) -- Line 5852
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_46 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_63 = SFX_upvr.Hit:Clone()
+	clone_63.Parent = arg1.RootPart
+	clone_63:Play()
+	if any_GetPlayerFromCharacter_result1_46 then
+		if any_GetPlayerFromCharacter_result1_46.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_63, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_35.fxFunction = fxFunction
+module["Grappler Assault Final"] = tbl_35
+module["Reequal Beatdown"] = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 5;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+module["Mufas Beatdowns"] = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 13;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+module["Quattro Beatdown"] = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 11;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+local tbl_5 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 6;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 5973
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local Parent = arg1.Parent
+	local any_GetPlayerFromCharacter_result1_20 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(Parent.Torso, 75, VFX_upvr.Lightning.Main)
+	local clone_65 = SFX_upvr.Hit:Clone()
+	clone_65.Parent = Parent.Torso
+	clone_65:Play()
+	if any_GetPlayerFromCharacter_result1_20 then
+		if any_GetPlayerFromCharacter_result1_20.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [55] #39
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [55] 39. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_65, 0.863)
+	-- KONSTANTERROR: [55] 39. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_5.fxFunction = fxFunction
+module["Jeno Beatdown"] = tbl_5
+local tbl_6 = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 40;
+	Damage = 13;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6021
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local Parent_3 = arg1.Parent
+	local any_GetPlayerFromCharacter_result1_38 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(Parent_3.Torso, 75, VFX_upvr.Lightning.Main)
+	local clone_62 = SFX_upvr.Hit:Clone()
+	clone_62.Parent = Parent_3.Torso
+	clone_62:Play()
+	if any_GetPlayerFromCharacter_result1_38 then
+		if any_GetPlayerFromCharacter_result1_38.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [55] #39
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [55] 39. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_62, 0.863)
+	-- KONSTANTERROR: [55] 39. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_6.fxFunction = fxFunction
+module["Mufa Beatdown"] = tbl_6
+local tbl_33 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 13;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6069
+	--[[ Upvalues[4]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: SFX_upvr (readonly)
+		[4]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local Parent_2 = arg1.Parent
+	local any_GetPlayerFromCharacter_result1_30 = Players_upvr:GetPlayerFromCharacter(arg2)
+	VFX_upvr.vfxEvent:FireAllClients(Parent_2.Torso, 75, VFX_upvr.Lightning.Main)
+	local clone_36 = SFX_upvr.Hit:Clone()
+	clone_36.Parent = Parent_2.Torso
+	clone_36:Play()
+	if any_GetPlayerFromCharacter_result1_30 then
+		if any_GetPlayerFromCharacter_result1_30.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [55] #39
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [55] 39. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_36, 0.863)
+	-- KONSTANTERROR: [55] 39. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_33.fxFunction = fxFunction
+module["Jeno Beatdown1"] = tbl_33
+module["Buddha Beatdown"] = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 50;
+	Damage = 7;
+	StunDuration = 1;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+module["Buddha Beatdown Final"] = {
+	Damage = 40;
+	StunDuration = 2.75;
+	KnockbackVelocity = 0;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.16;
+	timeDelay = 1.5;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	fxFunction = VfxFunction1;
+}
+local tbl_29 = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 90;
+	Damage = 1;
+	StunDuration = 0.5;
+	KnockbackVelocity = 3;
+	ScreenShakeIntensity = 0.1;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6165
+	--[[ Upvalues[2]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+	]]
+	local clone_86 = SFX_upvr.Hit:Clone()
+	clone_86.Parent = arg1.RootPart
+	clone_86:Play()
+	game.Debris:AddItem(clone_86, 0.863)
+end
+tbl_29.fxFunction = fxFunction
+module["Sync Beatdown"] = tbl_29
+local tbl_2 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 0.01;
+	StunDuration = 0.5;
+	KnockbackVelocity = 3;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6201
+	--[[ Upvalues[2]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+	]]
+	local clone_81 = SFX_upvr.Hit:Clone()
+	clone_81.Parent = arg1.RootPart
+	clone_81:Play()
+	game.Debris:AddItem(clone_81, 0.863)
+end
+tbl_2.fxFunction = fxFunction
+module["Alen Beatdown"] = tbl_2
+local tbl_27 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 5;
+	StunDuration = 0.5;
+	KnockbackVelocity = 3;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6237
+	--[[ Upvalues[2]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+	]]
+	local clone_59 = SFX_upvr.Hit:Clone()
+	clone_59.Parent = arg1.RootPart
+	clone_59:Play()
+	game.Debris:AddItem(clone_59, 0.863)
+end
+tbl_27.fxFunction = fxFunction
+module["Fuji Beatdown"] = tbl_27
+local tbl_32 = {
+	CustomHitReaction = false;
+	Damage = 5;
+	StunDuration = 1;
+	KnockbackVelocity = 100;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 6274
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_28 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_16 = VFX_upvr.SystemaCombo:Clone()
+	clone_16.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_16.Size = Vector3.new(0, 1, 0)
+	clone_16.Transparency = 0
+	clone_16.Parent = workspace.Debris
+	local any_Create_result1_44 = TweenService_upvr:Create(clone_16, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_44:Play()
+	any_Create_result1_44:Destroy()
+	local any_Create_result1_3 = TweenService_upvr:Create(clone_16, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_3:Play()
+	any_Create_result1_3:Destroy()
+	game:GetService("Debris"):AddItem(clone_16, 1)
+	wait(0.1)
+	local clone_10 = SFX_upvr.Hit:Clone()
+	clone_10.Parent = arg1.RootPart
+	clone_10:Play()
+	if any_GetPlayerFromCharacter_result1_28 then
+		if any_GetPlayerFromCharacter_result1_28.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_10, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_32.fxFunction = fxFunction
+module["Fuji Beatdown Final"] = tbl_32
+local tbl_31 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 75;
+	Damage = 0.01;
+	StunDuration = 0.5;
+	KnockbackVelocity = 3;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6337
+	--[[ Upvalues[2]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+	]]
+	local clone_58 = SFX_upvr.Hit:Clone()
+	clone_58.Parent = arg1.RootPart
+	clone_58:Play()
+	game.Debris:AddItem(clone_58, 0.863)
+end
+tbl_31.fxFunction = fxFunction
+module["YVL Beatdown"] = tbl_31
+local tbl_11 = {
+	CustomHitReaction = false;
+	Damage = 5;
+	StunDuration = 1;
+	KnockbackVelocity = 100;
+	RagdollDuration = 2.5;
+	iFrameDuration = 3.25;
+	ScreenShakeIntensity = 1.75;
+	Hitspeed = 0.3;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(0, 0, 0);
+	BlockBreak = false;
+	FinalCombo = true;
+	MasteryXp = 10;
+}
+local function fxFunction(arg1, arg2) -- Line 6374
+	--[[ Upvalues[5]:
+		[1]: Players_upvr (readonly)
+		[2]: VFX_upvr (readonly)
+		[3]: TweenService_upvr (readonly)
+		[4]: SFX_upvr (readonly)
+		[5]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_43 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_40 = VFX_upvr.SystemaCombo:Clone()
+	clone_40.CFrame = arg1.RootPart.CFrame * CFrame.fromEulerAnglesXYZ((math.pi/2), 0, 0)
+	clone_40.Size = Vector3.new(0, 1, 0)
+	clone_40.Transparency = 0
+	clone_40.Parent = workspace.Debris
+	local any_Create_result1_52 = TweenService_upvr:Create(clone_40, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Transparency = 1;
+	})
+	any_Create_result1_52:Play()
+	any_Create_result1_52:Destroy()
+	local any_Create_result1_51 = TweenService_upvr:Create(clone_40, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = Vector3.new(20, 0, 20);
+	})
+	any_Create_result1_51:Play()
+	any_Create_result1_51:Destroy()
+	game:GetService("Debris"):AddItem(clone_40, 1)
+	wait(0.1)
+	local clone_56 = SFX_upvr.Hit:Clone()
+	clone_56.Parent = arg1.RootPart
+	clone_56:Play()
+	if any_GetPlayerFromCharacter_result1_43 then
+		if any_GetPlayerFromCharacter_result1_43.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [135] #93
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [135] 93. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_56, 0.863)
+	-- KONSTANTERROR: [135] 93. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_11.fxFunction = fxFunction
+module["Alen Beatdown Final"] = tbl_11
+module["Vampy Beatdown"] = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 5;
+	StunDuration = 0.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+module["Inverted Spear of Heaven"] = {
+	CustomHitReaction = true;
+	Type = "Extender";
+	Stamina = 50;
+	Damage = 2;
+	StunDuration = 1.5;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+	fxFunction = VfxFunction1;
+}
+local tbl_55 = {
+	CustomHitReaction = true;
+	Type = "Finisher";
+	Stamina = 40;
+	Damage = 3;
+	StunDuration = 0.3;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 0.25;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = false;
+	FinalCombo = false;
+}
+local function fxFunction(arg1, arg2) -- Line 6487
+	--[[ Upvalues[3]:
+		[1]: Players_upvr (readonly)
+		[2]: SFX_upvr (readonly)
+		[3]: addOutline_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+	local any_GetPlayerFromCharacter_result1_39 = Players_upvr:GetPlayerFromCharacter(arg2)
+	local clone_55 = SFX_upvr.Hit:Clone()
+	clone_55.Parent = arg1.RootPart
+	clone_55:Play()
+	if any_GetPlayerFromCharacter_result1_39 then
+		if any_GetPlayerFromCharacter_result1_39.Settings.Outline.Value == true then
+			addOutline_upvr(arg1)
+			-- KONSTANTWARNING: GOTO [41] #30
+		end
+	else
+		addOutline_upvr(arg1)
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+	game.Debris:AddItem(clone_55, 0.863)
+	-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+end
+tbl_55.fxFunction = fxFunction
+module["Vampy Kick"] = tbl_55
+module["Vampy Kick Final"] = {
+	CustomHitReaction = true;
+	Damage = 7;
+	StunDuration = 0.2;
+	KnockbackVelocity = 110;
+	ScreenShakeIntensity = 1.5;
+	ScreenShakeBypass = false;
+	reverseKnockback = true;
+	BlockBreak = true;
+	FinalCombo = true;
+	fxFunction = function(arg1, arg2) -- Line 6525, Named "fxFunction"
+		--[[ Upvalues[3]:
+			[1]: Players_upvr (readonly)
+			[2]: SFX_upvr (readonly)
+			[3]: addOutline_upvr (readonly)
+		]]
+		-- KONSTANTERROR: [0] 1. Error Block 9 start (CF ANALYSIS FAILED)
+		local any_GetPlayerFromCharacter_result1_29 = Players_upvr:GetPlayerFromCharacter(arg2)
+		local clone_53 = SFX_upvr.Hit:Clone()
+		clone_53.Parent = arg1.RootPart
+		clone_53:Play()
+		if any_GetPlayerFromCharacter_result1_29 then
+			if any_GetPlayerFromCharacter_result1_29.Settings.Outline.Value == true then
+				addOutline_upvr(arg1)
+				-- KONSTANTWARNING: GOTO [41] #30
+			end
+		else
+			addOutline_upvr(arg1)
+		end
+		-- KONSTANTERROR: [0] 1. Error Block 9 end (CF ANALYSIS FAILED)
+		-- KONSTANTERROR: [41] 30. Error Block 6 start (CF ANALYSIS FAILED)
+		game.Debris:AddItem(clone_53, 0.863)
+		-- KONSTANTERROR: [41] 30. Error Block 6 end (CF ANALYSIS FAILED)
+	end;
+}
+module["Shiba Grab"] = {
+	CustomHitReaction = false;
+	ClanSkill = true;
+	Clan = "Shiba";
+	Type = "Extender";
+	Stamina = 45;
+	Damage = 35;
+	StunDuration = 3;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+module["Broly Grab"] = {
+	CustomHitReaction = false;
+	Type = "Extender";
+	Stamina = 45;
+	Damage = 35;
+	StunDuration = 3;
+	KnockbackVelocity = 0;
+	ScreenShakeIntensity = 1.75;
+	ScreenShakeBypass = false;
+	Hitspeed = 0.1;
+	Hitbox = Hitboxes.BasicCombat;
+	HitboxPosOffset = CFrame.new(0, 0, -2);
+	HitboxSizeOffset = Vector3.new(-1, 0, -1);
+	BlockBreak = true;
+	FinalCombo = false;
+	MasteryXp = 10;
+	fxFunction = VfxFunction1;
+}
+return module
