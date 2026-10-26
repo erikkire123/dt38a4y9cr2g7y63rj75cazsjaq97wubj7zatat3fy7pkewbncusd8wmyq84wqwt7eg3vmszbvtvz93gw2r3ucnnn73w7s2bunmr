@@ -1,0 +1,349 @@
+local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local UserInputService = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+
+local clothingFolder = workspace.Map.POS.ClothingStore.StoreProduction
+
+-- Toggle state (starts OFF, click the button to enable)
+local enabled = false
+
+-- Weak table so destroyed prompts don't pile up
+local processed = setmetatable({}, { __mode = "k" })
+
+local keyMap = {
+    ["▲"] = Enum.KeyCode.Up,
+    ["▼"] = Enum.KeyCode.Down,
+    ["◀"] = Enum.KeyCode.Left,
+    ["▶"] = Enum.KeyCode.Right,
+}
+
+------------------------------------------------------------
+-- Small toggle menu
+------------------------------------------------------------
+local gui = Instance.new("ScreenGui")
+gui.Name = "FoldToggleGui"
+gui.ResetOnSpawn = false
+
+local okParent = pcall(function()
+    gui.Parent = (gethui and gethui()) or game:GetService("CoreGui")
+end)
+if not okParent or not gui.Parent then
+    gui.Parent = player:WaitForChild("PlayerGui")
+end
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.fromOffset(86, 26)
+button.Position = UDim2.new(0, 12, 0.5, 0)
+button.BackgroundColor3 = Color3.fromRGB(170, 50, 50)
+button.TextColor3 = Color3.new(1, 1, 1)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 12
+button.Text = "Fold: OFF"
+button.AutoButtonColor = false
+button.Parent = gui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 6)
+corner.Parent = button
+
+local function refreshButton()
+    if enabled then
+        button.Text = "Fold: ON"
+        button.BackgroundColor3 = Color3.fromRGB(50, 160, 80)
+    else
+        button.Text = "Fold: OFF"
+        button.BackgroundColor3 = Color3.fromRGB(170, 50, 50)
+    end
+end
+
+-- Drag support (drag to move, click to toggle)
+local dragging = false
+local moved = false
+local dragStart, startPos
+
+button.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        moved = false
+        dragStart = input.Position
+        startPos = button.Position
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and (
+        input.UserInputType == Enum.UserInputType.MouseMovement
+        or input.UserInputType == Enum.UserInputType.Touch
+    ) then
+        local delta = input.Position - dragStart
+        if delta.Magnitude > 4 then
+            moved = true
+        end
+        button.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if dragging and (
+        input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch
+    ) then
+        dragging = false
+        if not moved then
+            enabled = not enabled
+            refreshButton()
+        end
+    end
+end)
+
+------------------------------------------------------------
+-- Original logic
+------------------------------------------------------------
+local function getRoot()
+    local character = player.Character or player.CharacterAdded:Wait()
+    return character:WaitForChild("HumanoidRootPart")
+end
+
+-- Phone "Apply" button (replaces the StartAssociate teleport + proximity prompt)
+local function getApplyButton()
+    local ok, result = pcall(function()
+        return player.PlayerGui.Main.Phone.Screen.Apps.Jobs.Detail.ApplyBar.ApplyButton
+    end)
+    return ok and result or nil
+end
+
+local function applyForJob()
+    local applyButton = getApplyButton()
+    if not applyButton then
+        return false
+    end
+
+    -- Call the executor's firesignal directly
+    local ok = pcall(function()
+        firesignal(applyButton.Activated)
+    end)
+
+    return ok
+end
+
+-- Start the shift if the job UI isn't visible
+local function checkJobVisible()
+    local playerGui = player:WaitForChild("PlayerGui")
+    local main = playerGui:WaitForChild("Main")
+    local job = main:WaitForChild("Job")
+
+    if not job.Visible then
+        applyForJob()
+        task.wait(1) -- give the job UI time to appear before re-checking
+        return false
+    end
+
+    return true
+end
+
+-- Look up arrows each time because the GUI may load late
+local function getArrows()
+    local ok, result = pcall(function()
+        return player.PlayerGui.Activities.Job.Fold.Arrows
+    end)
+
+    return ok and result or nil
+end
+
+local function readSequence()
+    local arrows = getArrows()
+    if not arrows then
+        return {}
+    end
+
+    local cells = {}
+
+    for _, cell in ipairs(arrows:GetChildren()) do
+        if cell.Name:match("^Cell%d+$") then
+            table.insert(cells, cell)
+        end
+    end
+
+    table.sort(cells, function(a, b)
+        return tonumber(a.Name:match("%d+"))
+            < tonumber(b.Name:match("%d+"))
+    end)
+
+    local sequence = {}
+
+    for _, cell in ipairs(cells) do
+        local label = cell:FindFirstChild("Arrow")
+
+        if label and keyMap[label.Text] then
+            table.insert(sequence, keyMap[label.Text])
+        end
+    end
+
+    return sequence
+end
+
+local function pressSequence(sequence)
+    for _, keyCode in ipairs(sequence) do
+        if not enabled then
+            return
+        end
+
+        VirtualInputManager:SendKeyEvent(
+            true, keyCode, false, game
+        )
+
+        task.wait(0.05)
+
+        VirtualInputManager:SendKeyEvent(
+            false, keyCode, false, game
+        )
+
+        task.wait(0.12)
+    end
+end
+
+local function sameSequence(a, b)
+    if #a ~= #b then
+        return false
+    end
+
+    for i = 1, #a do
+        if a[i] ~= b[i] then
+            return false
+        end
+    end
+
+    return true
+end
+
+-- Solve rounds while the sequence changes
+local function runMinigame()
+    local sequence
+    local deadline = os.clock() + 5
+
+    repeat
+        sequence = readSequence()
+
+        if #sequence == 0 then
+            task.wait(0.1)
+        end
+    until #sequence > 0 or os.clock() > deadline or not enabled
+
+    if #sequence == 0 then
+        return false
+    end
+
+    local rounds = 0
+
+    while enabled and #sequence > 0 and rounds < 10 do
+        rounds += 1
+
+        pressSequence(sequence)
+        task.wait(0.4)
+
+        local nextSequence = readSequence()
+
+        if #nextSequence == 0
+            or sameSequence(sequence, nextSequence) then
+            break
+        end
+
+        sequence = nextSequence
+    end
+
+    return true
+end
+
+local function teleportTo(prompt)
+    local part = prompt.Parent
+
+    if not (part and part:IsA("BasePart")) then
+        part = prompt:FindFirstAncestorWhichIsA("BasePart")
+    end
+
+    if not part then
+        return false
+    end
+
+    local root = getRoot()
+    root.CFrame = part.CFrame + Vector3.new(0, 2, 0)
+
+    task.wait(0.4)
+    return true
+end
+
+-- Retry Fold and wait for the minigame to appear
+local function triggerFold(prompt)
+    for attempt = 1, 3 do
+        if not enabled then
+            return false
+        end
+
+        if not prompt.Parent or not prompt.Enabled then
+            return false
+        end
+
+        fireproximityprompt(prompt)
+        task.wait(0.5)
+
+        local deadline = os.clock() + 1.5
+
+        repeat
+            local sequence = readSequence()
+
+            if #sequence > 0 then
+                runMinigame()
+                return true
+            end
+
+            task.wait(0.1)
+        until os.clock() >= deadline or not enabled
+    end
+
+    return false
+end
+
+while true do
+    -- Idle while toggled off
+    if not enabled then
+        task.wait(0.2)
+        continue
+    end
+
+    if not checkJobVisible() then
+        task.wait(0.5)
+        continue
+    end
+
+    for _, obj in ipairs(clothingFolder:GetDescendants()) do
+        if not enabled then
+            break
+        end
+
+        if obj:IsA("ProximityPrompt")
+            and obj.Name == "Fold"
+            and obj.Enabled
+            and not processed[obj] then
+
+            if teleportTo(obj) then
+                if obj.Parent and obj.Enabled then
+                    local success = triggerFold(obj)
+
+                    if success then
+                        processed[obj] = true
+                    end
+
+                    task.wait(0.3)
+                end
+            end
+        end
+    end
+
+    task.wait(0.5)
+end
